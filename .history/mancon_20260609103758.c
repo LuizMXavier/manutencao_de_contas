@@ -171,3 +171,31 @@ void atualizarSaldo(FILE *arquivo) {
 
     printf("\nConta nao encontrada.\n");
 }
+void encerrarConta(FILE *arquivo) {
+    Cliente cliente;
+    int conta;
+
+    rewind(arquivo);
+
+    printf("\nNumero da conta: ");
+    scanf("%d", &conta);
+
+    while(fread(&cliente, sizeof(Cliente), 1, arquivo) == 1) {
+
+        if(cliente.ativo && cliente.numeroConta == conta) {
+
+            cliente.ativo = 0;
+
+            fseek(arquivo, -sizeof(Cliente), SEEK_CUR);
+
+            fwrite(&cliente, sizeof(Cliente), 1, arquivo);
+
+            fflush(arquivo);
+
+            printf("\nConta encerrada com sucesso!\n");
+            return;
+        }
+    }
+
+    printf("\nConta nao encontrada.\n");
+}
