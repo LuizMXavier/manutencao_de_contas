@@ -199,25 +199,3 @@ void encerrarConta(FILE *arquivo) {
 
     printf("\nConta nao encontrada.\n");
 }
-void listarClientes(FILE *arquivo) {
-    Cliente cliente;
-    int contador = 0;
-
-    rewind(arquivo);
-
-    printf("\n===== CLIENTES CADASTRADOS =====\n");
-
-    while(fread(&cliente, sizeof(Cliente), 1, arquivo) == 1) {
-
-        if(cliente.ativo) {
-            printf("\nRegistro %d\n", contador);
-            printf("Conta: %d\n", cliente.numeroConta);
-            printf("Nome : %s\n", cliente.nome);
-            printf("Saldo: %.2f\n", cliente.saldo);
-        }
-
-        contador++;
-    }
-
-    printf("\nFim da listagem.\n");
-}
