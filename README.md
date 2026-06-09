@@ -269,16 +269,7 @@ Saldo: 2500
 
 Posteriormente o cliente pode ser consultado, atualizado ou removido.
 
----
 
-## Conclusão
-
-A solução atende integralmente aos requisitos do exercício ao utilizar:
-
-* Arquivo binário;
-* Registros de tamanho fixo;
-* Acesso direto por posição usando `fseek()`;
-* Leitura com `fread()`;
 * Escrita com `fwrite()`;
 * Reinicialização da leitura com `rewind()`.
 
